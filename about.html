@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — KristinG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F5F3EE;
+      --teal:     #356B6F;
+      --taupe:    #76695E;
+      --mustard:  #C59A2A;
+      --dark:     #1A1B1A;
+      --mid:      #52544F;
+      --warm-mid: #DCD8CE;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--warm-mid);
+    }
+
+    .nav-wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+
+    /* ── ABOUT LAYOUT ── */
+    .about-wrap {
+      padding-top: 5rem;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+    }
+
+    /* TEXT SIDE */
+    .about-text {
+      padding: 7rem 4rem 6rem 3rem;
+      max-width: 600px;
+    }
+
+    /* Page label */
+    .about-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Handwriting image for "Kristin" — upload handwriting.png to images/ folder */
+    .about-name-text {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--dark);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Handwriting signature image */
+    .about-name-handwriting {
+      display: block;
+      height: auto;
+      width: min(420px, 100%);
+      margin-bottom: 2rem;
+    }
+
+    /* Divider */
+    .about-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--teal);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Body text */
+    .about-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* Strikethrough styling — intentional personality */
+    .about-body del {
+      color: var(--taupe);
+      text-decoration: line-through;
+      text-decoration-color: var(--teal);
+      text-decoration-thickness: 1.5px;
+    }
+
+    /* Links section */
+    .about-links {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .about-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+
+    .about-links a:hover { opacity: 0.65; }
+
+    /* SIDEBAR */
+    .about-sidebar {
+      background: var(--warm-mid);
+      padding: 7rem 2.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .sidebar-block {}
+
+    .sidebar-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.6rem;
+    }
+
+    .sidebar-block p, .sidebar-block li {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar-block li::before {
+      content: '—';
+      color: var(--teal);
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--warm-mid);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      color: var(--taupe);
+    }
+
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .about-wrap {
+        grid-template-columns: 1fr;
+      }
+      .about-text { padding: 6rem 1.5rem 3rem; max-width: none; }
+      .about-sidebar { padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="/" class="nav-wordmark">KristinG</a>
+    <ul class="nav-links">
+      <li><a href="/about.html" class="active">About</a></li>
+      <li><a href="/work.html">Work</a></li>
+      <li><a href="/writing.html">Writing</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="about-wrap">
+
+    <!-- TEXT -->
+    <div class="about-text">
+
+      <!-- Page label: "About" in small caps — always rendered as real text for crawlers -->
+      <p class="about-label">About</p>
+
+      <!-- Handwriting signature — "KristinG." in Kristin's own hand -->
+      <img
+        src="handwriting-kristin.png"
+        alt="Kristin Gecan"
+        class="about-name-handwriting"
+      >
+
+      <div class="about-rule"></div>
+
+      <!-- BODY -->
+      <div class="about-body">
+        <p>I have built my career at mission-driven organizations that take ideas seriously and seek to reach the people who need them.</p>
+
+        <p>My professional work spans editorial vision, content strategy, thought leadership, and brand voice—at the Institute of Design (Illinois Tech), the University of Chicago, and the Poetry Foundation. Along the way, I've edited books, produced podcasts, directed public programs, and built content ecosystems. I've also taught kindergartners in the Caribbean, undergraduates in the suburbs, and graduate students in the South Side of Chicago, studied art history, developed creative nonfiction, and advised deans and executives on how to say what they mean.</p>
+
+        <p>My doctoral research at the Institute of Design examines human agency in AI-augmented environments—specifically how writing and design literacy can strengthen our capacity to think critically, imagine alternatives, and participate in shaping the technologies that surround us. I have presented this work at the Writing Innovation Symposium, the Feminisms and Rhetorics Conference, the Image Conference, and soon (2026) the Philosophy of Human-Technology Relations Conference at TU Delft.</p>
+
+        <!-- NOTE: strikethrough is intentional — it's a bit of personality -->
+        <p>I care deeply about our children's futures, I believe reading someone closely is a distinctly rewarding human intimacy, and I think collaborative writing can be a form of care. I live near Chicago with <del>a pack of wolves</del> my husband, three kids, and Australian Cattle Dog-mix. Somehow, the only band that my husband and I can agree upon is the Mountain Goats.</p>
+      </div>
+
+      <!-- LINKS -->
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/kristingecan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://id.iit.edu" target="_blank" rel="noopener">id.iit.edu</a>
+        <a href="mailto:kristin@krist.ing">Contact</a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="about-sidebar">
+
+      <div class="sidebar-block">
+        <p class="sidebar-label">Current roles</p>
+        <ul>
+          <li>Senior Director &amp; Assistant Dean of Content, Institute of Design at Illinois Tech</li>
+          <li>Adjunct Faculty, North Central College</li>
+          <li>PhD candidate, Institute of Design</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="sidebar-label">Education</p>
+        <ul>
+          <li>PhD in progress — Institute of Design</li>
+          <li>MA, Humanities — University of Chicago</li>
+          <li>BA, English writing &amp; French — Illinois Wesleyan University</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="sidebar-label">Previously</p>
+        <ul>
+          <li>Associate Director of Editorial, University of Chicago</li>
+          <li>Interim Media &amp; Marketing Director, Poetry Foundation</li>
+          <li>Editor, Cision</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <p class="sidebar-label">Languages</p>
+        <p>English (native) · French (fluent)</p>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Kristin Gecan</p>
+    <p>
+      <a href="https://www.linkedin.com/in/kristingecan" target="_blank" rel="noopener">LinkedIn</a>
+      &ensp;&middot;&ensp;
+      <a href="https://id.iit.edu" target="_blank" rel="noopener">id.iit.edu</a>
+      &ensp;&middot;&ensp;
+      <a href="mailto:kristin@krist.ing">kristin@krist.ing</a>
+    </p>
+  </footer>
+
+</body>
+</html>
