@@ -123,12 +123,15 @@
     /* Image side */
     .project-image {
       position: relative;
-      background: var(--warm-mid);
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
     }
 
     .project-image img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
       filter: saturate(0.9);
       transition: filter 0.3s;
@@ -138,7 +141,7 @@
       filter: saturate(1);
     }
 
-    /* Year label sits below image, not over it */
+    /* Year label sits below image */
     .project-year {
       display: block;
       margin-top: 0.5rem;
@@ -288,6 +291,10 @@
       footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
   </style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
 </head>
 <body>
 

@@ -173,12 +173,12 @@
       color: var(--mid);
     }
 
-    /* Small portrait — nonchalant, top-aligned, not full height */
+    /* Small portrait — aligned with teal rule */
     .hero-photo {
       position: sticky;
       top: 6rem;
       width: 180px;
-      margin-top: 5rem;
+      padding-top: 13rem;
     }
 
     .hero-photo img {
@@ -186,7 +186,6 @@
       height: auto;
       display: block;
       filter: saturate(0.85);
-      object-fit: cover;
     }
 
     /* ── SECTION SHARED ── */
@@ -279,23 +278,32 @@
       .hero {
         grid-template-columns: 1fr;
         padding: 5rem 1.5rem 3rem;
-        gap: 1.5rem;
+        gap: 0;
+        position: relative;
       }
 
+      /* Small circular portrait tucked into top-right corner on mobile */
       .hero-photo {
-        position: static;
-        width: 120px;
-        margin-top: 0;
-        order: -1;
+        position: absolute;
+        top: 5.5rem;
+        right: 1.5rem;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        overflow: hidden;
+        padding-top: 0;
       }
 
       .hero-photo img {
-        object-position: center 15%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 10%;
       }
 
       .hero-text {
         padding: 0;
-        order: 1;
+        padding-right: 6rem; /* prevent text from flowing under photo */
       }
 
       section { padding: 3.5rem 1.5rem; }
@@ -304,6 +312,10 @@
       footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
   </style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
 </head>
 <body>
 
