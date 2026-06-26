@@ -14,26 +14,111 @@
       --dark:#1A1B1A; --mid:#52544F; --warm-mid:#DCD8CE;
     }
     body { background:var(--cream); color:var(--dark); font-family:'Newsreader',Georgia,serif; font-size:18px; line-height:1.65; }
+
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.25rem 3rem; background:var(--cream); border-bottom:1px solid var(--warm-mid); }
     .nav-wordmark { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); text-decoration:none; }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
     .nav-links a { font-family:'Space Grotesk',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color:var(--teal); }
-    .writing-wrap { padding:9rem 3rem 6rem; max-width:700px; margin:0 auto; }
+
+    .writing-wrap { padding:9rem 3rem 6rem; max-width:720px; margin:0 auto; }
+
     .eyebrow { font-family:'Space Grotesk',sans-serif; font-size:0.72rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; }
+
     h1 { font-family:'Newsreader',Georgia,serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:300; letter-spacing:-0.02em; line-height:1.05; color:var(--dark); margin-bottom:2rem; }
-    .writing-rule { width:3rem; height:2px; background:var(--teal); margin-bottom:2.5rem; }
-    .coming-soon { font-size:1rem; line-height:1.8; color:var(--mid); }
-    .tags { margin-top:2.5rem; display:flex; gap:0.75rem; flex-wrap:wrap; }
-    .tag { font-family:'Space Grotesk',sans-serif; font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); border:1px solid var(--warm-mid); padding:0.3rem 0.75rem; }
-    footer { border-top:1px solid var(--warm-mid); padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; margin-top:6rem; }
+
+    .writing-rule { width:3rem; height:2px; background:var(--teal); margin-bottom:3rem; }
+
+    /* Tags */
+    .tags { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:3.5rem; }
+    .tag { font-family:'Space Grotesk',sans-serif; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--taupe); border:1px solid var(--warm-mid); padding:0.25rem 0.65rem; cursor:default; }
+
+    /* Writing entries */
+    .writing-list { display:flex; flex-direction:column; }
+
+    .writing-entry {
+      padding:2rem 0;
+      border-top:1px solid var(--warm-mid);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1rem 2rem;
+      align-items:start;
+    }
+
+    .writing-entry:last-child { border-bottom:1px solid var(--warm-mid); }
+
+    .writing-meta {
+      font-family:'Space Grotesk',sans-serif;
+      font-size:0.7rem;
+      font-weight:500;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--taupe);
+      margin-bottom:0.4rem;
+      display:flex;
+      gap:1rem;
+      align-items:center;
+    }
+
+    .writing-pub {
+      color:var(--teal);
+    }
+
+    .writing-entry h2 {
+      font-family:'Newsreader',Georgia,serif;
+      font-size:1.15rem;
+      font-weight:400;
+      line-height:1.35;
+      color:var(--dark);
+      margin-bottom:0.4rem;
+    }
+
+    .writing-entry h2 a {
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      transition:border-color 0.2s;
+    }
+
+    .writing-entry h2 a:hover { border-color:var(--teal); }
+
+    .writing-desc {
+      font-size:0.95rem;
+      line-height:1.65;
+      color:var(--mid);
+    }
+
+    .writing-year {
+      font-family:'Space Grotesk',sans-serif;
+      font-size:0.72rem;
+      font-weight:500;
+      letter-spacing:0.08em;
+      color:var(--warm-mid);
+      white-space:nowrap;
+      padding-top:0.2rem;
+    }
+
+    /* Coming soon note */
+    .coming-soon {
+      font-size:0.95rem;
+      line-height:1.8;
+      color:var(--taupe);
+      font-style:italic;
+      padding:2rem 0;
+      border-top:1px solid var(--warm-mid);
+    }
+
+    footer { border-top:1px solid var(--warm-mid); padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; margin-top:4rem; }
     footer p { font-family:'Space Grotesk',sans-serif; font-size:0.78rem; color:var(--taupe); }
     footer a { color:var(--teal); text-decoration:none; }
     footer a:hover { text-decoration:underline; }
+
     @media (max-width:768px) {
       nav { padding:1rem 1.5rem; }
       .nav-links { gap:1.5rem; }
       .writing-wrap { padding:7rem 1.5rem 4rem; }
+      .writing-entry { grid-template-columns:1fr; }
+      .writing-year { display:none; }
       footer { flex-direction:column; gap:0.75rem; text-align:center; }
     }
   </style>
@@ -54,14 +139,56 @@
     <p class="eyebrow">Essays, notes &amp; observations</p>
     <h1>Writing</h1>
     <div class="writing-rule"></div>
-    <p class="coming-soon">Posts will appear here soon—on design, writing, AI and human agency, teaching, and whatever else is worth thinking through in public. Planned categories below.</p>
+
+    <!-- TAG FILTERS (visual only for now) -->
     <div class="tags">
+      <span class="tag">All</span>
       <span class="tag">Design Reviews</span>
       <span class="tag">Research Updates</span>
       <span class="tag">AI &amp; Technology</span>
       <span class="tag">Teaching &amp; Rhetoric</span>
       <span class="tag">Field Notes</span>
       <span class="tag">Recommended Reading</span>
+    </div>
+
+    <!-- WRITING LIST -->
+    <div class="writing-list">
+
+      <!-- Accepted abstract: PHTR 2026 -->
+      <article class="writing-entry">
+        <div>
+          <div class="writing-meta">
+            <span class="writing-pub">PHTR Conference, TU Delft</span>
+            <span>Research Updates</span>
+          </div>
+          <h2>
+            <a href="/phtr-abstract.html">The Futures We Forgot: Reopening the Collective Closures in Personal Technologies to Strengthen Human Agency</a>
+          </h2>
+          <p class="writing-desc">Technologies that feel inevitable underwent rhetorical closure, ending debate about alternatives.</p>
+        </div>
+        <span class="writing-year">2026</span>
+      </article>
+
+      <!-- Published: Chicago Review -->
+      <article class="writing-entry">
+        <div>
+          <div class="writing-meta">
+            <span class="writing-pub">Chicago Review</span>
+            <span>Design Reviews</span>
+          </div>
+          <h2>
+            <a href="https://www.chicagoreview.org/yates-mckee-strike-art-contemporary-art-and-the-post-occupy-condition/" target="_blank" rel="noopener">
+              Review: Yates McKee, <em>Strike Art: Contemporary Art and the Post-Occupy Condition</em>
+            </a>
+          </h2>
+          <p class="writing-desc">A review of McKee's examination of how artistic practice intersected with and animated the Occupy movement — and what that means for art's relationship to political struggle.</p>
+        </div>
+        <span class="writing-year">2018</span>
+      </article>
+
+      <!-- Placeholder for future posts -->
+      <p class="coming-soon">More writing coming soon.</p>
+
     </div>
   </div>
 

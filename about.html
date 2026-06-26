@@ -28,7 +28,6 @@
       line-height: 1.65;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -75,16 +74,13 @@
       padding-top: 5rem;
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 380px;
+      grid-template-columns: 1fr 300px;
     }
 
-    /* TEXT SIDE */
     .about-text {
-      padding: 7rem 4rem 6rem 3rem;
-      max-width: 600px;
+      padding: 7rem 2.5rem 6rem 3rem;
     }
 
-    /* Page label */
     .about-label {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.72rem;
@@ -95,26 +91,14 @@
       margin-bottom: 0.6rem;
     }
 
-    /* Handwriting image for "Kristin" — upload handwriting.png to images/ folder */
-    .about-name-text {
-      font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      color: var(--dark);
-      margin-bottom: 2.5rem;
-    }
-
-    /* Handwriting signature image */
+    /* Handwriting signature — half previous size */
     .about-name-handwriting {
       display: block;
       height: auto;
-      width: min(280px, 80%);
+      width: min(140px, 50%);
       margin-bottom: 2rem;
     }
 
-    /* Divider */
     .about-rule {
       width: 3rem;
       height: 2px;
@@ -122,7 +106,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* Body text */
     .about-body p {
       font-size: 1.05rem;
       line-height: 1.8;
@@ -132,7 +115,6 @@
 
     .about-body p:last-child { margin-bottom: 0; }
 
-    /* Strikethrough styling — intentional personality */
     .about-body del {
       color: var(--taupe);
       text-decoration: line-through;
@@ -140,7 +122,6 @@
       text-decoration-thickness: 1.5px;
     }
 
-    /* Links section */
     .about-links {
       margin-top: 3rem;
       display: flex;
@@ -163,16 +144,14 @@
 
     .about-links a:hover { opacity: 0.65; }
 
-    /* SIDEBAR */
+    /* ── SIDEBAR ── */
     .about-sidebar {
       background: var(--warm-mid);
-      padding: 7rem 2.5rem 4rem;
+      padding: 7rem 2rem 4rem 2rem;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
     }
-
-    .sidebar-block {}
 
     .sidebar-label {
       font-family: 'Space Grotesk', sans-serif;
@@ -184,7 +163,7 @@
       margin-bottom: 0.6rem;
     }
 
-    .sidebar-block p, .sidebar-block li {
+    .sidebar-block p {
       font-size: 0.9rem;
       line-height: 1.7;
       color: var(--mid);
@@ -195,11 +174,23 @@
       padding: 0;
     }
 
+    /* Bullet indent fix: wrapped lines align under text, not bullet */
+    .sidebar-block li {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+
     .sidebar-block li::before {
       content: '—';
       color: var(--teal);
-      margin-right: 0.5rem;
       font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-right: 0.5rem;
+      margin-top: 0.15rem;
     }
 
     /* ── FOOTER ── */
@@ -224,10 +215,8 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
-      .about-wrap {
-        grid-template-columns: 1fr;
-      }
-      .about-text { padding: 6rem 1.5rem 3rem; max-width: none; }
+      .about-wrap { grid-template-columns: 1fr; }
+      .about-text { padding: 6rem 1.5rem 3rem; }
       .about-sidebar { padding: 3rem 1.5rem; }
       footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
@@ -235,7 +224,6 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
   <nav>
     <a href="/" class="nav-wordmark">KristinG</a>
     <ul class="nav-links">
@@ -246,16 +234,11 @@
     </ul>
   </nav>
 
-  <!-- MAIN -->
   <div class="about-wrap">
 
-    <!-- TEXT -->
     <div class="about-text">
-
-      <!-- Page label: "About" in small caps — always rendered as real text for crawlers -->
       <p class="about-label">About</p>
 
-      <!-- Handwriting signature — "KristinG." in Kristin's own hand -->
       <img
         src="handwriting-kristin.png"
         alt="Kristin Gecan"
@@ -264,7 +247,6 @@
 
       <div class="about-rule"></div>
 
-      <!-- BODY -->
       <div class="about-body">
         <p>I have built my career at mission-driven organizations that take ideas seriously and seek to reach the people who need them.</p>
 
@@ -272,21 +254,18 @@
 
         <p>My doctoral research at the Institute of Design examines human agency in AI-augmented environments—specifically how writing and design literacy can strengthen our capacity to think critically, imagine alternatives, and participate in shaping the technologies that surround us. I have presented this work at the Writing Innovation Symposium, the Feminisms and Rhetorics Conference, the Image Conference, and soon (2026) the Philosophy of Human-Technology Relations Conference at TU Delft.</p>
 
-        <!-- NOTE: strikethrough is intentional — it's a bit of personality -->
         <p>I care deeply about our children's futures, I believe reading someone closely is a distinctly rewarding human intimacy, and I think collaborative writing can be a form of care. I live near Chicago with <del>a pack of wolves</del> my husband, three kids, and Australian Cattle Dog-mix. Somehow, the only band that my husband and I can agree upon is the Mountain Goats.</p>
       </div>
 
-      <!-- LINKS -->
       <div class="about-links">
         <a href="https://www.linkedin.com/in/kristingecan" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://id.iit.edu" target="_blank" rel="noopener">id.iit.edu</a>
-        <a href="/cv.pdf" target="_blank">Download CV</a>
+        <a href="/CV.pdf" target="_blank">Download CV</a>
         <a href="/resume.pdf" target="_blank">Download Resume</a>
         <a href="mailto:kristin@krist.ing">Contact</a>
       </div>
     </div>
 
-    <!-- SIDEBAR -->
     <aside class="about-sidebar">
 
       <div class="sidebar-block">
@@ -294,7 +273,7 @@
         <ul>
           <li>Senior Director &amp; Assistant Dean of Content, Institute of Design at Illinois Tech</li>
           <li>Adjunct Faculty, North Central College</li>
-          <li>PhD candidate, Institute of Design</li>
+          <li>PhD Researcher, Institute of Design</li>
         </ul>
       </div>
 
@@ -319,7 +298,7 @@
       <div class="sidebar-block">
         <p class="sidebar-label">Documents</p>
         <ul>
-          <li><a href="/cv.pdf" target="_blank" style="color: var(--teal); text-decoration: none;">Download CV</a></li>
+          <li><a href="/CV.pdf" target="_blank" style="color: var(--teal); text-decoration: none;">Download CV</a></li>
           <li><a href="/resume.pdf" target="_blank" style="color: var(--teal); text-decoration: none;">Download Resume</a></li>
         </ul>
       </div>
@@ -332,7 +311,6 @@
     </aside>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Kristin Gecan</p>
     <p>

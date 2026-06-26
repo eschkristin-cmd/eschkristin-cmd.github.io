@@ -74,19 +74,23 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 0;
       padding-top: 5rem;
+      padding-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 3rem;
+      align-items: start;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-text {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 6rem 3rem 6rem 3rem;
-      max-width: 680px;
+      justify-content: flex-start;
+      padding: 5rem 0 3rem 0;
     }
 
     /* Small eyebrow label */
@@ -169,29 +173,20 @@
       color: var(--mid);
     }
 
-    /* Photo panel */
+    /* Small portrait — nonchalant, top-aligned, not full height */
     .hero-photo {
-      position: relative;
-      overflow: hidden;
-      background: var(--warm-mid);
+      position: sticky;
+      top: 6rem;
+      width: 180px;
+      margin-top: 5rem;
     }
 
     .hero-photo img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      height: auto;
       display: block;
       filter: saturate(0.85);
-      mix-blend-mode: multiply;
-    }
-
-    .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(53,107,111,0.15) 100%);
-      pointer-events: none;
+      object-fit: cover;
     }
 
     /* ── SECTION SHARED ── */
@@ -283,18 +278,24 @@
 
       .hero {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-      }
-
-      .hero-text {
-        padding: 4rem 1.5rem 2.5rem;
-        order: 2;
+        padding: 5rem 1.5rem 3rem;
+        gap: 1.5rem;
       }
 
       .hero-photo {
+        position: static;
+        width: 120px;
+        margin-top: 0;
+        order: -1;
+      }
+
+      .hero-photo img {
+        object-position: center 15%;
+      }
+
+      .hero-text {
+        padding: 0;
         order: 1;
-        height: 55vw;
-        min-height: 240px;
       }
 
       section { padding: 3.5rem 1.5rem; }
@@ -318,7 +319,7 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero" style="padding: 0; max-width: none; margin: 0;">
+  <section class="hero">
     <div class="hero-text">
       <p class="eyebrow">Senior Director &amp; Assistant Dean &middot; Institute of Design at Illinois Tech</p>
 
